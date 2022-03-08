@@ -1,0 +1,12 @@
+.user-content{
+   margin: 5px; 
+   overflow-y: auto;
+}
+
+.user-name {
+    margin: 5px;    
+}
+
+.user-name:hover {
+    background-color: thistle;
+}

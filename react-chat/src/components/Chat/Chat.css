@@ -1,0 +1,100 @@
+.chat-app2 {
+    width: 300px;
+    height: 600px;
+    border: 2px solid brown;
+    margin: 10px;
+    border-radius: 45px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+    padding: 10px;
+}
+
+.header{
+    background-color: brown;
+    color: white;
+    font-weight: bold;
+    width: 320px;
+    height: 40px;
+    position: absolute;
+    top: 11px;
+    border-radius: 45px 45px 0 0;
+    border: 1px solid brown;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-message2 {
+    margin-top: 5px;
+    max-height: 450px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.chat-button{
+    width: 20px; 
+    height: 20px; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;         
+    border-right:10px solid blue; 
+    margin-right: 15px;      
+}
+
+.chat-input{
+    direction: rtl;
+    margin-right: 3px;
+    margin-left: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 5px;
+    height: 40px;
+    font-size: medium;
+}
+
+.futer {
+    position: absolute;
+    border-top: 2px solid rgb(224, 224, 224);
+    padding-top: 15px;
+    width: 300px;
+    top: 560px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+.modal {
+    height: 200px;
+    width: 200px;
+    background-color: white;
+    border: mediumpurple solid 2px;
+    border-radius: 12px;
+    position: absolute;
+    top:200px;
+    left: 75px;
+  }
+
+  .chat-img{
+      height: 40px;
+      width: 40px;
+  }
+
+  .menu-button {
+      margin-top: 40px;
+      background-color: blue;
+      color: white;
+      border-radius: 10px;
+      height: 30px;
+  }
+
+  .users {
+    margin-top: 10px;
+    position: absolute;
+    width: 160px;
+    top: 90px;
+    border: solid 1px brown;
+    background-color: white;
+  }

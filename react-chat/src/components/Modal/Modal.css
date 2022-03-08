@@ -1,0 +1,22 @@
+.modal-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.modal-input {
+    align-items: center;
+    height: 40px;
+    width: 150px;
+    border: 1px blue solid;
+    border-radius: 5px;
+    direction: rtl;
+    padding: 10px;
+    font-size: x-large;
+}
+
+.modal-img {
+    height:40px;
+    width:40px
+}
