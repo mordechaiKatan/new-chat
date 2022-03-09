@@ -9,18 +9,23 @@ let Modal = ({setTheName, setShowModal})=> {
     const [nameMessage,setNameMessage]=useState();
 
     function addNameToStorage () {
-        axios.post("/api/checkName", {
-            checkedName: checkedName,
-            userId: localStorage.getItem("socketId")    
-        })
-        .then ((res)=> {
-            if (res.data) {
-                localStorage.setItem("name",checkedName);
-                setTheName(checkedName);
-                setShowModal(false);
+        if (checkedName) {
+            // const myRe =/^[a-zA-Z]+$/;
+            // let test = myRe.test(checkedName);
+            // if (test) {
+                axios.post("/api/checkName", {
+                    checkedName: checkedName,
+                    userId: localStorage.getItem("socketId")    
+                })
+                .then ((res)=> {
+                    if (res.data) {
+                        localStorage.setItem("name",checkedName);
+                        setTheName(checkedName);
+                        setShowModal(false);
+                    } else {setNameMessage("The name already exists 🥺")}                
+                })
+            // }
         }
-            else {setNameMessage("The name already exists 🥺")}
-        })
     }
 
     return (
