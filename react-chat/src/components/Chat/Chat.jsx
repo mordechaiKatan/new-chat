@@ -15,7 +15,7 @@ let Chat = ()=>{
   const [theId,setTheId] = useState();
   const [value,setValue]=useState("");
   const [showModal,setShowModal] = useState(false);
-  const [showUsers,setShowUsers] = useState(true);
+  const [showUsers,setShowUsers] = useState(false);
   const [buttonText,setButtonText] = useState();
   const [partner,setPartner] = useState("");
   const [channel,setChannel] = useState([]);
