@@ -16,7 +16,7 @@ let Chat = ()=>{
   const [value,setValue]=useState("");
   const [showModal,setShowModal] = useState(false);
   const [showUsers,setShowUsers] = useState(false);
-  const [buttonText,setButtonText] = useState();
+  const [buttonText,setButtonText] = useState("Choose a partner");
   const [partner,setPartner] = useState("");
   const [channel,setChannel] = useState([]);
   const [channelId,setChannelId] = useState();
@@ -36,7 +36,7 @@ let Chat = ()=>{
   },[])
 
   useEffect (()=> {
-    if (theName)
+    if (theName && theId)
     {
       axios.post("/api/saveUser",
       {savedName: localStorage.getItem("name"),
@@ -52,11 +52,6 @@ let Chat = ()=>{
   }
    ,[privateMsg])
    
-  useEffect(()=> {
-        if (showUsers) {setButtonText("Hide users")}
-        else {if (partner) {setButtonText(partner)} else {setButtonText("Display users")}}
-    },[showUsers])
-
   useEffect(()=> {
         if (partner) {
         axios.get("/api/getChannel",
@@ -94,6 +89,11 @@ let Chat = ()=>{
         setChannel([]);
     }
 
+    function disableInput () {
+        if (showModal || showUsers || !partner)
+        {return true}
+    }
+
     return (
         <div className="chat-app2">
 
@@ -112,6 +112,10 @@ let Chat = ()=>{
                     theName={theName}
                 />
             </div>}
+
+            {partner &&
+                <div className="partnerName">{partner}</div>
+            }
             
             {showModal &&
             <div className="modal">
@@ -140,7 +144,7 @@ let Chat = ()=>{
                     value={value}
                     onChange={(e)=>setValue(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    disabled={showModal}
+                    disabled={disableInput()}
                     ></input>
 
                 <img

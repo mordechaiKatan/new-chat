@@ -91,10 +91,17 @@
   }
 
   .users {
-    margin-top: 10px;
+    align-items: center;
     position: absolute;
-    width: 160px;
     top: 90px;
-    border: solid 1px brown;
-    background-color: white;
   }
+
+  .partnerName {
+      position: absolute;
+      top: 55px;
+      left: 280px;
+      background-color: aqua;
+      border-radius: 20%;
+      padding: 10px;
+  }
+

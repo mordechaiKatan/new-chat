@@ -5,10 +5,16 @@ import axios from "axios";
 let Users = ({setPartner, setShowUsers, theName})=> {
 
     const [users, setUsers]=useState();
+    const [text,setText]=useState("Loading users...");
 
     useEffect(()=> {
         axios.get("/api/users")
-        .then ((res)=> {setUsers(res.data)})
+        .then ((res)=> {
+            setUsers(res.data);
+            if (!res.data || res.data.length<2){
+                console.log("moishale")
+                setText("No users")}
+        })
     },[])
 
     let chooseUser = (user)=> {
@@ -30,7 +36,7 @@ let Users = ({setPartner, setShowUsers, theName})=> {
                 {user.userName}
                 </div>)
             }
-        }) : <div>No users</div>
+        }) : <div>{text}</div>
         }
         </div>
     )

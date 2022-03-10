@@ -1,6 +1,13 @@
 .user-content{
-   margin: 5px; 
+   /* margin: 5px;  */
    overflow-y: auto;
+    margin-top: 10px;
+    /* position: absolute; */
+    width: 160px;
+    top: 90px;
+    border: solid 1px brown;
+    background-color: white;
+
 }
 
 .user-name {
