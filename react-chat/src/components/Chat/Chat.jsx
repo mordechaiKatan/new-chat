@@ -53,7 +53,6 @@ let Chat = ()=>{
                 }         
             })
             setChannel2(channel)
-            console.log(channel)
         }         
     }
   ,[channel])

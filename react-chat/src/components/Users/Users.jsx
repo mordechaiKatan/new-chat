@@ -24,7 +24,6 @@ let Users = ({setPartner, setShowUsers, theName})=> {
         if (search) {
            let rex = new RegExp(`^${search}`,"gi");
            let newUsers = users.filter((e)=> rex.test(e.userName))
-           console.log(newUsers)
            setSearchUsers(newUsers);
         }
          else {
@@ -34,7 +33,6 @@ let Users = ({setPartner, setShowUsers, theName})=> {
     [search])
 
     let chooseUser = (user)=> {
-        console.log(user);
         setPartner(user);
         setShowUsers(false)
     }
