@@ -76,7 +76,7 @@ app.post("/api/addMessage", async (req,res) => {
     {participants:{$all:[clientMsg.sender.userName,clientMsg.receiver]}}
     ).exec();
   await channel.updateOne(
-      {messages: [{newMessage: clientMsg.msg , fullName: clientMsg.sender.userName}, ...channel.messages]}
+      {messages: [{ fullName: clientMsg.sender.userName,newMessage: clientMsg.msg}, ...channel.messages]}
       )
   res.send ("update channel success");
 
