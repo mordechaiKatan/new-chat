@@ -7,6 +7,7 @@ import axios from 'axios';
 import icon from "../Chat/icons/arrow2.png"
 import icon2 from "../Chat/icons/garbage.png";
 import xicon from "../Chat/icons/xicon.png";
+import searchIcon from "../Chat/icons/search.png";
 import Users from "../Users/Users";
 
 let Chat = ()=>{
@@ -16,9 +17,9 @@ let Chat = ()=>{
   const [value,setValue]=useState("");
   const [showModal,setShowModal] = useState(false);
   const [showUsers,setShowUsers] = useState(false);
-  const [buttonText,setButtonText] = useState("Choose a partner");
   const [partner,setPartner] = useState("");
   const [channel,setChannel] = useState([]);
+  const [channel2,setChannel2] = useState([]);
   const [channelId,setChannelId] = useState();
   const [privateMsg,setPrivateMsg] = useState();  
 
@@ -42,7 +43,20 @@ let Chat = ()=>{
       {savedName: localStorage.getItem("name"),
       userId: theId}
     )}
-  },[theName,theId])  
+  },[theName,theId])
+  
+  useEffect (()=>{
+      if (channel) {
+            channel.forEach((e,i)=>{
+                if (e.fullName===theName){
+                    e.fullName="אני"
+                }         
+            })
+            setChannel2(channel)
+            console.log(channel)
+        }         
+    }
+  ,[channel])
    
   useEffect(()=>{
     if (privateMsg){
@@ -79,7 +93,7 @@ let Chat = ()=>{
                     },
                 msg: value
             })
-            let newMsg= {newMessage: value, fullName: localStorage.getItem("name")}
+            let newMsg= {fullName: localStorage.getItem("name"),newMessage: value}
             setChannel([newMsg, ...channel]);
         }
         setValue("");
@@ -97,12 +111,16 @@ let Chat = ()=>{
     return (
         <div className="chat-app2">
 
-            <div className="header">MY CHAT</div>
-
-            <button
-                className="menu-button"
-                onClick={()=>setShowUsers(!showUsers)}>{buttonText}
-            </button>
+            <div className="header">
+                <img
+                    className="search-img"
+                    src={searchIcon}
+                    onClick={()=>setShowUsers(!showUsers)}/>
+            </div>
+            
+            {partner &&
+                <div className="partnerName">{partner}</div>
+            }
 
             {showUsers && 
             <div className="users">
@@ -112,10 +130,6 @@ let Chat = ()=>{
                     theName={theName}
                 />
             </div>}
-
-            {partner &&
-                <div className="partnerName">{partner}</div>
-            }
             
             {showModal &&
             <div className="modal">
@@ -126,8 +140,8 @@ let Chat = ()=>{
             </div> }
             
             <div className="list-message2">
-               {channel &&
-               channel.map((msg, index)=>
+               {channel2 &&
+               channel2.map((msg, index)=> 
                 <MessageItem
                     key={index}
                     msg={msg}
