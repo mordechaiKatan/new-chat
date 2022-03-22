@@ -42,12 +42,15 @@ let Users = ({setPartner, setShowUsers, theName})=> {
     return (
         <div className="user-content">
         
-        {users &&
+        {(users && users.length>1)
+        ?
         <input
             className="search-input"
             placeholder="Search a partner"
             onChange={(e)=>setSearch(e.target.value)}
-        /> } 
+        />
+        : <div>{text}</div>
+        } 
         {searchUsers &&             
         searchUsers.map((user)=>{
             if (user.userName!==theName){
@@ -61,8 +64,7 @@ let Users = ({setPartner, setShowUsers, theName})=> {
                 </div>)
             }
         })}
-        {!users && <div>{text}</div>
-        }
+        
         </div>
     )
 }
